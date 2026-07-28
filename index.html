@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bless-U Fitness · Inteligência de Recompra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E0C16; --surface:#171426; --surface2:#1F1B31; --line:#2C2740;
+  --txt:#EDEAF7; --dim:#9A94B8; --faint:#6E6A85;
+  --lime:#C9F24B; --mag:#FF5C7A; --amber:#FFC64D; --green:#26D07C; --cyan:#4DD8E8;
+  --disp:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--txt);font-family:var(--body);
+  -webkit-font-smoothing:antialiased;line-height:1.55}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(760px 460px at 78% -8%,rgba(201,242,75,.10),transparent 62%),
+             radial-gradient(680px 420px at 6% 4%,rgba(255,92,122,.10),transparent 60%)}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 26px 90px}
+
+/* ---------- header ---------- */
+header{padding:44px 0 20px;display:flex;justify-content:space-between;
+  align-items:flex-end;gap:24px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:14px}
+.mark{width:46px;height:46px;border-radius:13px;background:linear-gradient(140deg,var(--lime),#7FD43C);
+  display:grid;place-items:center;font-family:var(--disp);font-weight:800;color:#12140A;font-size:19px}
+.bname{font-family:var(--disp);font-weight:800;font-size:21px;letter-spacing:-.02em;line-height:1.1}
+.bsub{font-size:12px;color:var(--dim);letter-spacing:.05em;text-transform:uppercase}
+.meta{text-align:right;font-size:12px;color:var(--dim);font-family:var(--mono)}
+.meta b{color:var(--txt);font-weight:600}
+
+/* ---------- hero ---------- */
+.hero{border:1px solid var(--line);border-radius:24px;background:
+  linear-gradient(160deg,var(--surface2),var(--surface));padding:38px 40px;margin-top:8px;
+  display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--lime);margin-bottom:16px}
+h1{font-family:var(--disp);font-weight:800;font-size:clamp(30px,4.1vw,50px);
+  line-height:1.02;letter-spacing:-.035em;margin:0 0 18px}
+h1 em{font-style:normal;color:var(--lime)}
+.lede{font-size:15.5px;color:var(--dim);max-width:50ch;margin:0}
+.lede b{color:var(--txt);font-weight:600}
+.leg{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:9px}
+.leg-item{display:flex;align-items:center;gap:11px;font-size:13px}
+.leg-dot{width:9px;height:9px;border-radius:50%;background:var(--c);flex:none;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 22%,transparent)}
+.leg-txt{display:flex;flex-direction:column;line-height:1.25;flex:1}
+.leg-txt strong{font-weight:600;font-size:13px}
+.leg-txt em{font-style:normal;color:var(--faint);font-size:11.5px}
+.leg-n{font-family:var(--mono);font-weight:700;font-size:15px}
+.clock{width:100%;height:auto;display:block}
+.ring-bg{fill:none;stroke:var(--line);stroke-width:1}
+.tick{stroke:var(--line);stroke-width:1.4}
+.seg{stroke:var(--surface);stroke-width:2.5;transition:opacity .18s}
+.clock:hover .seg{opacity:.42}
+.clock .seg:hover{opacity:1}
+.seg-n{font-family:var(--mono);font-size:13px;font-weight:700;fill:#0E0C16}
+.clk-n{font-family:var(--disp);font-size:62px;font-weight:800;fill:var(--txt);letter-spacing:-.04em}
+.clk-l{font-family:var(--mono);font-size:13px;fill:var(--lime);letter-spacing:.34em}
+.clk-s{font-size:11.5px;fill:var(--faint);letter-spacing:.02em}
+
+/* ---------- kpis ---------- */
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:22px 0 0}
+.kpi{border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:18px 18px 16px;
+  position:relative;overflow:hidden}
+.kpi::after{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--c,var(--lime))}
+.kpi-l{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;
+  margin-bottom:9px;min-height:28px}
+.kpi-v{font-family:var(--disp);font-weight:800;font-size:27px;letter-spacing:-.03em;line-height:1}
+.kpi-s{font-size:11.5px;color:var(--faint);margin-top:7px;font-family:var(--mono)}
+
+/* ---------- sections ---------- */
+section{margin-top:52px}
+.shead{display:flex;align-items:baseline;justify-content:space-between;gap:18px;
+  margin-bottom:18px;flex-wrap:wrap}
+h2{font-family:var(--disp);font-weight:800;font-size:25px;letter-spacing:-.028em;margin:0}
+.snote{font-size:13px;color:var(--dim);max-width:56ch}
+.card{border:1px solid var(--line);border-radius:20px;background:var(--surface);padding:26px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid-ab{display:grid;grid-template-columns:1fr 1.05fr;gap:18px;align-items:start}
+.ctitle{font-size:13.5px;font-weight:600;margin:0 0 3px}
+.csub{font-size:12px;color:var(--faint);margin:0 0 16px}
+
+/* charts */
+.chart{width:100%;height:auto;display:block;overflow:visible}
+.grid{stroke:var(--line);stroke-width:1;stroke-dasharray:2 4}
+.axl{font-family:var(--mono);font-size:10.5px;fill:var(--faint)}
+.axr{fill:var(--cyan)}
+.bar{fill:url(#gb);fill:#3D3560;transition:fill .16s}
+.bar:hover{fill:var(--lime)}
+.ln{fill:none;stroke:var(--cyan);stroke-width:2;stroke-linejoin:round}
+.ln-dot{fill:var(--ink);stroke:var(--cyan);stroke-width:2}
+.b-rec{fill:var(--lime)} .b-nov{fill:#3D3560}
+.pct-ln{fill:none;stroke:var(--mag);stroke-width:2;stroke-dasharray:4 3}
+.pct-dot{fill:var(--mag)}
+.band{fill:rgba(38,208,124,.07)}
+.cbar{fill:#3D3560;transition:fill .16s} .cbar:hover{fill:var(--lime)}
+.cbar.hi{fill:var(--lime)}
+.cval{font-family:var(--mono);font-size:10.5px;fill:var(--dim)}
+.lgd{display:flex;gap:18px;flex-wrap:wrap;font-size:11.5px;color:var(--dim);margin-top:12px}
+.lgd i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:6px}
+
+/* abc */
+.abc-row{display:flex;gap:15px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.abc-row:last-child{border-bottom:none}
+.abc-tag{width:38px;height:38px;border-radius:11px;flex:none;display:grid;place-items:center;
+  font-family:var(--disp);font-weight:800;font-size:17px;color:var(--ink);background:var(--c)}
+.abc-body{flex:1;min-width:0}
+.abc-top{display:flex;justify-content:space-between;gap:12px;font-size:13px;margin-bottom:7px}
+.abc-v{font-family:var(--mono);font-weight:600}
+.abc-track{height:7px;border-radius:4px;background:var(--surface2);overflow:hidden}
+.abc-fill{height:100%;border-radius:4px}
+.abc-sub{display:flex;justify-content:space-between;gap:12px;font-size:11.5px;
+  color:var(--faint);margin-top:7px}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;
+  color:var(--faint);font-weight:600;padding:0 12px 11px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:11px 12px;border-bottom:1px solid rgba(44,39,64,.55);vertical-align:middle}
+.tbl tbody tr:last-child td{border-bottom:none}
+.tbl tbody tr:hover{background:var(--surface2)}
+.tbl .num{text-align:right;font-family:var(--mono);font-size:12.5px;white-space:nowrap}
+.tbl .ctr{text-align:center}
+.tbl .money{font-weight:600}
+.tbl strong{font-weight:600}
+.neg{color:var(--mag)} .pos{color:var(--green)}
+.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:10.5px;font-weight:600;
+  color:var(--c);background:color-mix(in srgb,var(--c) 15%,transparent);
+  border:1px solid color-mix(in srgb,var(--c) 34%,transparent);white-space:nowrap}
+.rfm{font-family:var(--mono);font-weight:700;color:var(--lime)}
+.tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;padding:5px 11px;border-radius:7px;margin-bottom:14px}
+.t-red{color:var(--mag);background:rgba(255,92,122,.12)}
+.t-green{color:var(--green);background:rgba(38,208,124,.12)}
+.t-amber{color:var(--amber);background:rgba(255,198,77,.12)}
+
+/* insight */
+.ins{border-left:3px solid var(--lime);background:var(--surface2);border-radius:0 14px 14px 0;
+  padding:17px 20px;margin-top:16px;font-size:13.5px;color:var(--dim)}
+.ins b{color:var(--txt);font-weight:600}
+.ins + .ins{margin-top:10px}
+.ins.red{border-color:var(--mag)} .ins.amber{border-color:var(--amber)}
+
+/* actions */
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:6px}
+.act{border:1px solid var(--line);border-radius:18px;background:var(--surface);padding:22px}
+.act-n{font-family:var(--disp);font-size:38px;font-weight:800;letter-spacing:-.04em;
+  line-height:1;color:var(--c)}
+.act-t{font-weight:600;font-size:14px;margin:9px 0 6px}
+.act-d{font-size:12.5px;color:var(--faint);margin:0}
+.act-v{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:12px;
+  padding-top:12px;border-top:1px solid var(--line)}
+
+footer{margin-top:66px;padding-top:22px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  font-size:11.5px;color:var(--faint);font-family:var(--mono)}
+
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;padding:30px 26px}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .grid2,.grid-ab,.acts{grid-template-columns:1fr}
+  .wrap{padding:0 16px 60px}
+  .tbl{font-size:12px} .tbl td,.tbl th{padding-left:7px;padding-right:7px}
+  .scroll{overflow-x:auto}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body><div class="wrap">
+
+<header>
+  <div class="brand">
+    <div class="mark">BU</div>
+    <div><div class="bname">Bless-U Fitness</div>
+    <div class="bsub">Inteligência de Recompra</div></div>
+  </div>
+  <div class="meta">Base <b>jan/2025 → 28 jul 2026</b><br>
+  <b>7.305</b> vendas · <b>2.569</b> clientes ativos</div>
+</header>
+
+<div class="hero">
+  <div>
+    <div class="eyebrow">O relógio do negócio</div>
+    <h1>Sua cliente volta a cada <em>33 dias</em>.</h1>
+    <p class="lede">Esse é o ciclo mediano de recompra da Bless-U. Ele define quem está em dia,
+    quem está na janela ideal de abordagem e quem já passou do ponto —
+    <b>260 clientes</b> precisam de contato agora, somando
+    <b>R$ 1.437.864</b> em relacionamento construído.</p>
+    <ul class="leg"><li class="leg-item"><span class="leg-dot" style="--c:#26D07C"></span>
+    <span class="leg-txt"><strong>No prazo</strong><em>Recomprou dentro do ciclo</em></span>
+    <span class="leg-n">241</span></li><li class="leg-item"><span class="leg-dot" style="--c:#FFC64D"></span>
+    <span class="leg-txt"><strong>No ponto de recompra</strong><em>Na janela ideal — abordar agora</em></span>
+    <span class="leg-n">113</span></li><li class="leg-item"><span class="leg-dot" style="--c:#FF5C7A"></span>
+    <span class="leg-txt"><strong>Atrasada (risco)</strong><em>Passou do ciclo — risco de perda</em></span>
+    <span class="leg-n">147</span></li><li class="leg-item"><span class="leg-dot" style="--c:#6E6A85"></span>
+    <span class="leg-txt"><strong>Perdida/inativa</strong><em>Muito além do ciclo — recuperar</em></span>
+    <span class="leg-n">585</span></li></ul>
+  </div>
+  <div><svg viewBox="0 0 420 420" class="clock" role="img" aria-label="Relógio de recompra">
+<circle cx="210" cy="210" r="196" class="ring-bg"/>
+<line class="tick" x1="210.0" y1="24.0" x2="210.0" y2="14.0"/><line class="tick" x1="234.3" y1="25.6" x2="234.9" y2="20.6"/><line class="tick" x1="258.1" y1="30.3" x2="259.4" y2="25.5"/><line class="tick" x1="281.2" y1="38.2" x2="283.1" y2="33.5"/><line class="tick" x1="303.0" y1="48.9" x2="308.0" y2="40.3"/><line class="tick" x1="323.2" y1="62.4" x2="326.3" y2="58.5"/><line class="tick" x1="341.5" y1="78.5" x2="345.1" y2="74.9"/><line class="tick" x1="357.6" y1="96.8" x2="361.5" y2="93.7"/><line class="tick" x1="371.1" y1="117.0" x2="379.7" y2="112.0"/><line class="tick" x1="381.8" y1="138.8" x2="386.5" y2="136.9"/><line class="tick" x1="389.7" y1="161.9" x2="394.5" y2="160.6"/><line class="tick" x1="394.4" y1="185.7" x2="399.4" y2="185.1"/><line class="tick" x1="396.0" y1="210.0" x2="406.0" y2="210.0"/><line class="tick" x1="394.4" y1="234.3" x2="399.4" y2="234.9"/><line class="tick" x1="389.7" y1="258.1" x2="394.5" y2="259.4"/><line class="tick" x1="381.8" y1="281.2" x2="386.5" y2="283.1"/><line class="tick" x1="371.1" y1="303.0" x2="379.7" y2="308.0"/><line class="tick" x1="357.6" y1="323.2" x2="361.5" y2="326.3"/><line class="tick" x1="341.5" y1="341.5" x2="345.1" y2="345.1"/><line class="tick" x1="323.2" y1="357.6" x2="326.3" y2="361.5"/><line class="tick" x1="303.0" y1="371.1" x2="308.0" y2="379.7"/><line class="tick" x1="281.2" y1="381.8" x2="283.1" y2="386.5"/><line class="tick" x1="258.1" y1="389.7" x2="259.4" y2="394.5"/><line class="tick" x1="234.3" y1="394.4" x2="234.9" y2="399.4"/><line class="tick" x1="210.0" y1="396.0" x2="210.0" y2="406.0"/><line class="tick" x1="185.7" y1="394.4" x2="185.1" y2="399.4"/><line class="tick" x1="161.9" y1="389.7" x2="160.6" y2="394.5"/><line class="tick" x1="138.8" y1="381.8" x2="136.9" y2="386.5"/><line class="tick" x1="117.0" y1="371.1" x2="112.0" y2="379.7"/><line class="tick" x1="96.8" y1="357.6" x2="93.7" y2="361.5"/><line class="tick" x1="78.5" y1="341.5" x2="74.9" y2="345.1"/><line class="tick" x1="62.4" y1="323.2" x2="58.5" y2="326.3"/><line class="tick" x1="48.9" y1="303.0" x2="40.3" y2="308.0"/><line class="tick" x1="38.2" y1="281.2" x2="33.5" y2="283.1"/><line class="tick" x1="30.3" y1="258.1" x2="25.5" y2="259.4"/><line class="tick" x1="25.6" y1="234.3" x2="20.6" y2="234.9"/><line class="tick" x1="24.0" y1="210.0" x2="14.0" y2="210.0"/><line class="tick" x1="25.6" y1="185.7" x2="20.6" y2="185.1"/><line class="tick" x1="30.3" y1="161.9" x2="25.5" y2="160.6"/><line class="tick" x1="38.2" y1="138.8" x2="33.5" y2="136.9"/><line class="tick" x1="48.9" y1="117.0" x2="40.3" y2="112.0"/><line class="tick" x1="62.4" y1="96.8" x2="58.5" y2="93.7"/><line class="tick" x1="78.5" y1="78.5" x2="74.9" y2="74.9"/><line class="tick" x1="96.8" y1="62.4" x2="93.7" y2="58.5"/><line class="tick" x1="117.0" y1="48.9" x2="112.0" y2="40.3"/><line class="tick" x1="138.8" y1="38.2" x2="136.9" y2="33.5"/><line class="tick" x1="161.9" y1="30.3" x2="160.6" y2="25.5"/><line class="tick" x1="185.7" y1="25.6" x2="185.1" y2="20.6"/><path class="seg" d="M210.0,32.0 A178,178 0 0 1 385.2,178.8 L326.2,189.3 A118,118 0 0 0 210.0,92.0 Z" fill="#26D07C" data-seg="No prazo"><title>No prazo: 241 clientes</title></path><path class="seg" d="M385.2,178.8 A178,178 0 0 1 368.1,291.8 L314.8,264.2 A118,118 0 0 0 326.2,189.3 Z" fill="#FFC64D" data-seg="No ponto de recompra"><title>No ponto de recompra: 113 clientes</title></path><path class="seg" d="M368.1,291.8 A178,178 0 0 1 252.8,382.8 L238.4,324.5 A118,118 0 0 0 314.8,264.2 Z" fill="#FF5C7A" data-seg="Atrasada (risco)"><title>Atrasada (risco): 147 clientes</title></path><path class="seg" d="M252.8,382.8 A178,178 0 1 1 210.0,32.0 L210.0,92.0 A118,118 0 1 0 238.4,324.5 Z" fill="#6E6A85" data-seg="Perdida/inativa"><title>Perdida/inativa: 585 clientes</title></path><text class="seg-n" x="305.0" y="96.5" text-anchor="middle">241</text><text class="seg-n" x="356.3" y="232.2" text-anchor="middle">113</text><text class="seg-n" x="301.7" y="326.2" text-anchor="middle">147</text><text class="seg-n" x="63.1" y="227.9" text-anchor="middle">585</text>
+<text class="clk-n" x="210" y="204" text-anchor="middle">33</text>
+<text class="clk-l" x="210" y="232" text-anchor="middle">DIAS</text>
+<text class="clk-s" x="210" y="256" text-anchor="middle">ciclo de recompra</text></svg></div>
+</div>
+
+<div class="kpis">
+  <div class="kpi" style="--c:var(--lime)"><div class="kpi-l">Faturamento no período</div>
+    <div class="kpi-v">R$ 6,43 mi</div><div class="kpi-s">19 meses</div></div>
+  <div class="kpi" style="--c:var(--cyan)"><div class="kpi-l">Ticket médio</div>
+    <div class="kpi-v">R$ 880</div><div class="kpi-s">por venda</div></div>
+  <div class="kpi" style="--c:var(--green)"><div class="kpi-l">Taxa de recorrência</div>
+    <div class="kpi-v">42,3%</div><div class="kpi-s">1.086 recompraram</div></div>
+  <div class="kpi" style="--c:var(--mag)"><div class="kpi-l">Contato imediato</div>
+    <div class="kpi-v">260</div><div class="kpi-s">R$ 1.437.864 em risco</div></div>
+  <div class="kpi" style="--c:var(--amber)"><div class="kpi-l">Peças vendidas</div>
+    <div class="kpi-v">113.958</div><div class="kpi-s">16 peças/venda</div></div>
+</div>
+
+<section>
+  <div class="shead"><h2>Pulso mensal</h2>
+  <p class="snote">Faturamento líquido por mês e volume de vendas. A linha marca os pedidos.</p></div>
+  <div class="card">
+    <p class="ctitle">Faturamento e volume</p>
+    <p class="csub">Barras: receita líquida · Linha: número de vendas · jul/26 é mês parcial (até dia 28)</p>
+    <svg viewBox="0 0 980 300" class="chart" role="img" aria-label="Faturamento mensal">
+<line class="grid" x1="62" y1="254.0" x2="960" y2="254.0"/><text class="axl" x="52" y="258.0" text-anchor="end">0k</text><line class="grid" x1="62" y1="197.0" x2="960" y2="197.0"/><text class="axl" x="52" y="201.0" text-anchor="end">147k</text><line class="grid" x1="62" y1="140.0" x2="960" y2="140.0"/><text class="axl" x="52" y="144.0" text-anchor="end">293k</text><line class="grid" x1="62" y1="83.0" x2="960" y2="83.0"/><text class="axl" x="52" y="87.0" text-anchor="end">440k</text><line class="grid" x1="62" y1="26.0" x2="960" y2="26.0"/><text class="axl" x="52" y="30.0" text-anchor="end">586k</text><rect class="bar" x="73.3" y="128.4" width="24.6" height="125.6" rx="3"><title>Jan/25: R$ 322.828 · 240 pedidos</title></rect><rect class="bar" x="120.6" y="145.6" width="24.6" height="108.4" rx="3"><title>Fev/25: R$ 278.584 · 223 pedidos</title></rect><rect class="bar" x="167.9" y="144.9" width="24.6" height="109.1" rx="3"><title>Mar/25: R$ 280.540 · 233 pedidos</title></rect><rect class="bar" x="215.1" y="145.2" width="24.6" height="108.8" rx="3"><title>Abr/25: R$ 279.609 · 292 pedidos</title></rect><rect class="bar" x="262.4" y="116.5" width="24.6" height="137.5" rx="3"><title>Mai/25: R$ 353.536 · 299 pedidos</title></rect><rect class="bar" x="309.7" y="133.2" width="24.6" height="120.8" rx="3"><title>Jun/25: R$ 310.451 · 278 pedidos</title></rect><rect class="bar" x="356.9" y="92.4" width="24.6" height="161.6" rx="3"><title>Jul/25: R$ 415.358 · 330 pedidos</title></rect><rect class="bar" x="404.2" y="137.0" width="24.6" height="117.0" rx="3"><title>Ago/25: R$ 300.719 · 335 pedidos</title></rect><rect class="bar" x="451.4" y="125.8" width="24.6" height="128.2" rx="3"><title>Set/25: R$ 329.542 · 369 pedidos</title></rect><rect class="bar" x="498.7" y="130.2" width="24.6" height="123.8" rx="3"><title>Out/25: R$ 318.112 · 378 pedidos</title></rect><rect class="bar" x="546.0" y="111.6" width="24.6" height="142.4" rx="3"><title>Nov/25: R$ 366.057 · 505 pedidos</title></rect><rect class="bar" x="593.2" y="153.0" width="24.6" height="101.0" rx="3"><title>Dez/25: R$ 259.527 · 328 pedidos</title></rect><rect class="bar" x="640.5" y="97.2" width="24.6" height="156.8" rx="3"><title>Jan/26: R$ 402.958 · 453 pedidos</title></rect><rect class="bar" x="687.8" y="149.7" width="24.6" height="104.3" rx="3"><title>Fev/26: R$ 268.128 · 388 pedidos</title></rect><rect class="bar" x="735.0" y="50.4" width="24.6" height="203.6" rx="3"><title>Mar/26: R$ 523.272 · 775 pedidos</title></rect><rect class="bar" x="782.3" y="104.4" width="24.6" height="149.6" rx="3"><title>Abr/26: R$ 384.623 · 555 pedidos</title></rect><rect class="bar" x="829.6" y="77.8" width="24.6" height="176.2" rx="3"><title>Mai/26: R$ 452.980 · 572 pedidos</title></rect><rect class="bar" x="876.8" y="141.0" width="24.6" height="113.0" rx="3"><title>Jun/26: R$ 290.354 · 390 pedidos</title></rect><rect class="bar" x="924.1" y="141.8" width="24.6" height="112.2" rx="3"><title>Jul/26: R$ 288.312 · 362 pedidos</title></rect>
+<polyline class="ln" points="85.6,197.5 132.9,201.5 180.2,199.2 227.4,185.3 274.7,183.6 321.9,188.6 369.2,176.3 416.5,175.2 463.7,167.2 511.0,165.0 558.3,135.1 605.5,176.8 652.8,147.4 700.1,162.7 747.3,71.6 794.6,123.4 841.8,119.4 889.1,162.2 936.4,168.8"/><circle class="ln-dot" cx="85.6" cy="197.5" r="3.2"/><circle class="ln-dot" cx="132.9" cy="201.5" r="3.2"/><circle class="ln-dot" cx="180.2" cy="199.2" r="3.2"/><circle class="ln-dot" cx="227.4" cy="185.3" r="3.2"/><circle class="ln-dot" cx="274.7" cy="183.6" r="3.2"/><circle class="ln-dot" cx="321.9" cy="188.6" r="3.2"/><circle class="ln-dot" cx="369.2" cy="176.3" r="3.2"/><circle class="ln-dot" cx="416.5" cy="175.2" r="3.2"/><circle class="ln-dot" cx="463.7" cy="167.2" r="3.2"/><circle class="ln-dot" cx="511.0" cy="165.0" r="3.2"/><circle class="ln-dot" cx="558.3" cy="135.1" r="3.2"/><circle class="ln-dot" cx="605.5" cy="176.8" r="3.2"/><circle class="ln-dot" cx="652.8" cy="147.4" r="3.2"/><circle class="ln-dot" cx="700.1" cy="162.7" r="3.2"/><circle class="ln-dot" cx="747.3" cy="71.6" r="3.2"/><circle class="ln-dot" cx="794.6" cy="123.4" r="3.2"/><circle class="ln-dot" cx="841.8" cy="119.4" r="3.2"/><circle class="ln-dot" cx="889.1" cy="162.2" r="3.2"/><circle class="ln-dot" cx="936.4" cy="168.8" r="3.2"/><text class="axl" x="85.6" y="272.0" text-anchor="middle">Jan/25</text><text class="axl" x="132.9" y="272.0" text-anchor="middle">Fev/25</text><text class="axl" x="180.2" y="272.0" text-anchor="middle">Mar/25</text><text class="axl" x="227.4" y="272.0" text-anchor="middle">Abr/25</text><text class="axl" x="274.7" y="272.0" text-anchor="middle">Mai/25</text><text class="axl" x="321.9" y="272.0" text-anchor="middle">Jun/25</text><text class="axl" x="369.2" y="272.0" text-anchor="middle">Jul/25</text><text class="axl" x="416.5" y="272.0" text-anchor="middle">Ago/25</text><text class="axl" x="463.7" y="272.0" text-anchor="middle">Set/25</text><text class="axl" x="511.0" y="272.0" text-anchor="middle">Out/25</text><text class="axl" x="558.3" y="272.0" text-anchor="middle">Nov/25</text><text class="axl" x="605.5" y="272.0" text-anchor="middle">Dez/25</text><text class="axl" x="652.8" y="272.0" text-anchor="middle">Jan/26</text><text class="axl" x="700.1" y="272.0" text-anchor="middle">Fev/26</text><text class="axl" x="747.3" y="272.0" text-anchor="middle">Mar/26</text><text class="axl" x="794.6" y="272.0" text-anchor="middle">Abr/26</text><text class="axl" x="841.8" y="272.0" text-anchor="middle">Mai/26</text><text class="axl" x="889.1" y="272.0" text-anchor="middle">Jun/26</text><text class="axl" x="936.4" y="272.0" text-anchor="middle">Jul/26</text></svg>
+    <div class="lgd"><span><i style="background:#3D3560"></i>Faturamento</span>
+    <span><i style="background:var(--cyan)"></i>Vendas</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><h2>Quem sustenta o faturamento</h2>
+  <p class="snote">Concentração por cliente e o formato real do ciclo de recompra da base.</p></div>
+  <div class="grid-ab">
+    <div class="card">
+      <p class="ctitle">Curva ABC de clientes</p>
+      <p class="csub">Participação no faturamento dos clientes ativos</p>
+      <div class="abc-row">
+<div class="abc-tag" style="--c:#26D07C">A</div>
+<div class="abc-body">
+  <div class="abc-top"><span class="abc-t">Curva A · 773 clientes</span><span class="abc-v">R$ 6.095.638</span></div>
+  <div class="abc-track"><div class="abc-fill" style="width:80.0%;background:#26D07C"></div></div>
+  <div class="abc-sub"><span>Foco total de retenção</span><span>80% do faturamento · 30% da base</span></div>
+</div></div><div class="abc-row">
+<div class="abc-tag" style="--c:#FFC64D">B</div>
+<div class="abc-body">
+  <div class="abc-top"><span class="abc-t">Curva B · 833 clientes</span><span class="abc-v">R$ 1.142.946</span></div>
+  <div class="abc-track"><div class="abc-fill" style="width:15.0%;background:#FFC64D"></div></div>
+  <div class="abc-sub"><span>Potencial de up-sell</span><span>15% do faturamento · 32% da base</span></div>
+</div></div><div class="abc-row">
+<div class="abc-tag" style="--c:#6E6A85">C</div>
+<div class="abc-body">
+  <div class="abc-top"><span class="abc-t">Curva C · 963 clientes</span><span class="abc-v">R$ 381.795</span></div>
+  <div class="abc-track"><div class="abc-fill" style="width:5.0%;background:#6E6A85"></div></div>
+  <div class="abc-sub"><span>Qualificar ou desengajar</span><span>5% do faturamento · 37% da base</span></div>
+</div></div>
+    </div>
+    <div class="card">
+      <p class="ctitle">Distribuição do ciclo de recompra</p>
+      <p class="csub">Intervalo típico entre compras · clientes recorrentes</p>
+      <svg viewBox="0 0 460 200" class="chart" role="img" aria-label="Distribuição do ciclo"><rect class="cbar" x="50.9" y="109.1" width="32.8" height="52.9" rx="3"><title>≤7d: 122 clientes</title></rect><text class="axl" x="67.3" y="178.0" text-anchor="middle">≤7d</text><text class="cval" x="67.3" y="103.1" text-anchor="middle">122</text><rect class="cbar" x="109.5" y="107.8" width="32.8" height="54.2" rx="3"><title>8–15d: 125 clientes</title></rect><text class="axl" x="125.9" y="178.0" text-anchor="middle">8–15d</text><text class="cval" x="125.9" y="101.8" text-anchor="middle">125</text><rect class="cbar hi" x="168.0" y="61.5" width="32.8" height="100.5" rx="3"><title>16–30d: 232 clientes</title></rect><text class="axl" x="184.4" y="178.0" text-anchor="middle">16–30d</text><text class="cval" x="184.4" y="55.5" text-anchor="middle">232</text><rect class="cbar" x="226.6" y="109.6" width="32.8" height="52.4" rx="3"><title>31–45d: 121 clientes</title></rect><text class="axl" x="243.0" y="178.0" text-anchor="middle">31–45d</text><text class="cval" x="243.0" y="103.6" text-anchor="middle">121</text><rect class="cbar" x="285.2" y="128.2" width="32.8" height="33.8" rx="3"><title>46–60d: 78 clientes</title></rect><text class="axl" x="301.6" y="178.0" text-anchor="middle">46–60d</text><text class="cval" x="301.6" y="122.2" text-anchor="middle">78</text><rect class="cbar" x="343.7" y="112.2" width="32.8" height="49.8" rx="3"><title>61–90d: 115 clientes</title></rect><text class="axl" x="360.1" y="178.0" text-anchor="middle">61–90d</text><text class="cval" x="360.1" y="106.2" text-anchor="middle">115</text><rect class="cbar" x="402.3" y="35.0" width="32.8" height="127.0" rx="3"><title>>90d: 293 clientes</title></rect><text class="axl" x="418.7" y="178.0" text-anchor="middle">>90d</text><text class="cval" x="418.7" y="29.0" text-anchor="middle">293</text></svg>
+      <div class="ins">A maior concentração está na faixa de <b>16 a 30 dias</b> — a compra é
+      mensal e previsível. Isso torna o atraso um sinal confiável: passou de 40 dias sem comprar,
+      há algo acontecendo.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><h2>Novas x recorrentes</h2>
+  <p class="snote">A faixa verde marca a zona saudável de recorrência para moda atacado (50–70%).</p></div>
+  <div class="card">
+    <p class="ctitle">Clientes únicas por mês</p>
+    <p class="csub">Barras empilhadas · linha rosa: % de recorrentes</p>
+    <svg viewBox="0 0 980 280" class="chart" role="img" aria-label="Novas versus recorrentes">
+<rect class="band" x="52" y="87.0" width="882" height="42.0"/><text class="axl" x="75.2" y="252.0" text-anchor="middle">Jan/25</text><text class="axl" x="168.1" y="252.0" text-anchor="middle">Mar/25</text><text class="axl" x="260.9" y="252.0" text-anchor="middle">Mai/25</text><text class="axl" x="353.7" y="252.0" text-anchor="middle">Jul/25</text><text class="axl" x="446.6" y="252.0" text-anchor="middle">Set/25</text><text class="axl" x="539.4" y="252.0" text-anchor="middle">Nov/25</text><text class="axl" x="632.3" y="252.0" text-anchor="middle">Jan/26</text><text class="axl" x="725.1" y="252.0" text-anchor="middle">Mar/26</text><text class="axl" x="817.9" y="252.0" text-anchor="middle">Mai/26</text><text class="axl" x="910.8" y="252.0" text-anchor="middle">Jul/26</text><line class="grid" x1="52" y1="234.0" x2="934" y2="234.0"/><text class="axl" x="42" y="238.0" text-anchor="end">0</text><text class="axl axr" x="944" y="238.0">0%</text><line class="grid" x1="52" y1="181.5" x2="934" y2="181.5"/><text class="axl" x="42" y="185.5" text-anchor="end">114</text><text class="axl axr" x="944" y="185.5">25%</text><line class="grid" x1="52" y1="129.0" x2="934" y2="129.0"/><text class="axl" x="42" y="133.0" text-anchor="end">228</text><text class="axl axr" x="944" y="133.0">50%</text><line class="grid" x1="52" y1="76.5" x2="934" y2="76.5"/><text class="axl" x="42" y="80.5" text-anchor="end">342</text><text class="axl axr" x="944" y="80.5">75%</text><line class="grid" x1="52" y1="24.0" x2="934" y2="24.0"/><text class="axl" x="42" y="28.0" text-anchor="end">457</text><text class="axl axr" x="944" y="28.0">100%</text><rect class="b-rec" x="63.6" y="177.9" width="23.2" height="56.1" rx="2.5"><title>Jan/25: 122 recorrentes</title></rect><rect class="b-nov" x="63.6" y="142.0" width="23.2" height="35.9" rx="2.5"><title>Jan/25: 78 novas</title></rect><rect class="b-rec" x="110.0" y="187.5" width="23.2" height="46.5" rx="2.5"><title>Fev/25: 101 recorrentes</title></rect><rect class="b-nov" x="110.0" y="149.4" width="23.2" height="38.2" rx="2.5"><title>Fev/25: 83 novas</title></rect><rect class="b-rec" x="156.4" y="188.5" width="23.2" height="45.5" rx="2.5"><title>Mar/25: 99 recorrentes</title></rect><rect class="b-nov" x="156.4" y="148.0" width="23.2" height="40.5" rx="2.5"><title>Mar/25: 88 novas</title></rect><rect class="b-rec" x="202.9" y="168.2" width="23.2" height="65.8" rx="2.5"><title>Abr/25: 143 recorrentes</title></rect><rect class="b-nov" x="202.9" y="129.1" width="23.2" height="39.1" rx="2.5"><title>Abr/25: 85 novas</title></rect><rect class="b-rec" x="249.3" y="167.8" width="23.2" height="66.2" rx="2.5"><title>Mai/25: 144 recorrentes</title></rect><rect class="b-nov" x="249.3" y="122.7" width="23.2" height="45.1" rx="2.5"><title>Mai/25: 98 novas</title></rect><rect class="b-rec" x="295.7" y="174.2" width="23.2" height="59.8" rx="2.5"><title>Jun/25: 130 recorrentes</title></rect><rect class="b-nov" x="295.7" y="131.4" width="23.2" height="42.8" rx="2.5"><title>Jun/25: 93 novas</title></rect><rect class="b-rec" x="342.1" y="169.1" width="23.2" height="64.9" rx="2.5"><title>Jul/25: 141 recorrentes</title></rect><rect class="b-nov" x="342.1" y="117.6" width="23.2" height="51.5" rx="2.5"><title>Jul/25: 112 novas</title></rect><rect class="b-rec" x="388.6" y="203.2" width="23.2" height="30.8" rx="2.5"><title>Ago/25: 67 recorrentes</title></rect><rect class="b-nov" x="388.6" y="111.2" width="23.2" height="92.0" rx="2.5"><title>Ago/25: 200 novas</title></rect><rect class="b-rec" x="435.0" y="188.9" width="23.2" height="45.1" rx="2.5"><title>Set/25: 98 recorrentes</title></rect><rect class="b-nov" x="435.0" y="96.0" width="23.2" height="92.9" rx="2.5"><title>Set/25: 202 novas</title></rect><rect class="b-rec" x="481.4" y="180.2" width="23.2" height="53.8" rx="2.5"><title>Out/25: 117 recorrentes</title></rect><rect class="b-nov" x="481.4" y="134.2" width="23.2" height="46.0" rx="2.5"><title>Out/25: 100 novas</title></rect><rect class="b-rec" x="527.8" y="174.2" width="23.2" height="59.8" rx="2.5"><title>Nov/25: 130 recorrentes</title></rect><rect class="b-nov" x="527.8" y="108.9" width="23.2" height="65.3" rx="2.5"><title>Nov/25: 142 novas</title></rect><rect class="b-rec" x="574.2" y="181.6" width="23.2" height="52.4" rx="2.5"><title>Dez/25: 114 recorrentes</title></rect><rect class="b-nov" x="574.2" y="145.7" width="23.2" height="35.9" rx="2.5"><title>Dez/25: 78 novas</title></rect><rect class="b-rec" x="620.7" y="152.6" width="23.2" height="81.4" rx="2.5"><title>Jan/26: 177 recorrentes</title></rect><rect class="b-nov" x="620.7" y="90.5" width="23.2" height="62.1" rx="2.5"><title>Jan/26: 135 novas</title></rect><rect class="b-rec" x="667.1" y="172.8" width="23.2" height="61.2" rx="2.5"><title>Fev/26: 133 recorrentes</title></rect><rect class="b-nov" x="667.1" y="122.7" width="23.2" height="50.1" rx="2.5"><title>Fev/26: 109 novas</title></rect><rect class="b-rec" x="713.5" y="131.4" width="23.2" height="102.6" rx="2.5"><title>Mar/26: 223 recorrentes</title></rect><rect class="b-nov" x="713.5" y="43.1" width="23.2" height="88.3" rx="2.5"><title>Mar/26: 192 novas</title></rect><rect class="b-rec" x="759.9" y="155.3" width="23.2" height="78.7" rx="2.5"><title>Abr/26: 171 recorrentes</title></rect><rect class="b-nov" x="759.9" y="99.2" width="23.2" height="56.1" rx="2.5"><title>Abr/26: 122 novas</title></rect><rect class="b-rec" x="806.3" y="147.1" width="23.2" height="86.9" rx="2.5"><title>Mai/26: 189 recorrentes</title></rect><rect class="b-nov" x="806.3" y="94.2" width="23.2" height="52.9" rx="2.5"><title>Mai/26: 115 novas</title></rect><rect class="b-rec" x="852.8" y="165.0" width="23.2" height="69.0" rx="2.5"><title>Jun/26: 150 recorrentes</title></rect><rect class="b-nov" x="852.8" y="124.5" width="23.2" height="40.5" rx="2.5"><title>Jun/26: 88 novas</title></rect><rect class="b-rec" x="899.2" y="172.4" width="23.2" height="61.6" rx="2.5"><title>Jul/26: 134 recorrentes</title></rect><rect class="b-nov" x="899.2" y="140.2" width="23.2" height="32.2" rx="2.5"><title>Jul/26: 70 novas</title></rect><polyline class="pct-ln" points="75.2,105.9 121.6,118.7 168.1,122.9 214.5,102.3 260.9,109.1 307.3,111.6 353.7,117.0 400.2,181.3 446.6,165.3 493.0,120.8 539.4,133.6 585.8,109.3 632.3,114.9 678.7,118.5 725.1,121.2 771.5,111.4 817.9,103.4 864.4,101.7 910.8,96.0"/><circle class="pct-dot" cx="75.2" cy="105.9" r="3"/><circle class="pct-dot" cx="121.6" cy="118.7" r="3"/><circle class="pct-dot" cx="168.1" cy="122.9" r="3"/><circle class="pct-dot" cx="214.5" cy="102.3" r="3"/><circle class="pct-dot" cx="260.9" cy="109.1" r="3"/><circle class="pct-dot" cx="307.3" cy="111.6" r="3"/><circle class="pct-dot" cx="353.7" cy="117.0" r="3"/><circle class="pct-dot" cx="400.2" cy="181.3" r="3"/><circle class="pct-dot" cx="446.6" cy="165.3" r="3"/><circle class="pct-dot" cx="493.0" cy="120.8" r="3"/><circle class="pct-dot" cx="539.4" cy="133.6" r="3"/><circle class="pct-dot" cx="585.8" cy="109.3" r="3"/><circle class="pct-dot" cx="632.3" cy="114.9" r="3"/><circle class="pct-dot" cx="678.7" cy="118.5" r="3"/><circle class="pct-dot" cx="725.1" cy="121.2" r="3"/><circle class="pct-dot" cx="771.5" cy="111.4" r="3"/><circle class="pct-dot" cx="817.9" cy="103.4" r="3"/><circle class="pct-dot" cx="864.4" cy="101.7" r="3"/><circle class="pct-dot" cx="910.8" cy="96.0" r="3"/></svg>
+    <div class="lgd"><span><i style="background:var(--lime)"></i>Recorrentes</span>
+    <span><i style="background:#3D3560"></i>Novas</span>
+    <span><i style="background:var(--mag)"></i>% recorrentes</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><h2>Ação imediata</h2>
+  <p class="snote">As três frentes que saem desta análise, em ordem de urgência.</p></div>
+  <div class="acts">
+    <div class="act" style="--c:var(--mag)"><div class="act-n">260</div>
+      <p class="act-t">Contatar agora</p>
+      <p class="act-d">Estão na janela ideal ou já passaram do ciclo. Cada dia de atraso reduz a chance de retorno.</p>
+      <div class="act-v">R$ 1.437.864 em relacionamento</div></div>
+    <div class="act" style="--c:var(--green)"><div class="act-n">354</div>
+      <p class="act-t">Manter e valorizar</p>
+      <p class="act-d">Compram no ritmo esperado. São a base previsível do faturamento — merecem tratamento preferencial.</p>
+      <div class="act-v">Núcleo saudável da carteira</div></div>
+    <div class="act" style="--c:var(--amber)"><div class="act-n">450</div>
+      <p class="act-t">Recuperar</p>
+      <p class="act-d">Clientes de alto valor que pararam de comprar. Campanha de reconquista com oferta dirigida.</p>
+      <div class="act-v">R$ 3.492.993 já faturados</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><h2>Contato imediato</h2>
+  <p class="snote">Ordenadas por faturamento — o maior valor em risco primeiro.</p></div>
+  <div class="card">
+    <span class="tag t-red">Prioridade máxima</span>
+    <div class="scroll"><table class="tbl "><thead><tr><th class="">Cliente</th><th class="num">Compras</th><th class="num">Ciclo</th><th class="num">Sem comprar</th><th class="num">Atraso</th><th class="num money">Faturamento</th><th class="ctr">Status</th></tr></thead><tbody><tr><td class=""><strong>marcia ALVES</strong></td><td class="num">37</td><td class="num">7d</td><td class="num">6d</td><td class="num"><span class="pos">-1d</span></td><td class="num money">R$ 43.449</td><td class="ctr"><span class="pill" style="--c:#FFC64D">No ponto</span></td></tr><tr><td class=""><strong>Jorge Emiliano mori perez</strong></td><td class="num">6</td><td class="num">21d</td><td class="num">22d</td><td class="num"><span class="neg">+1d</span></td><td class="num money">R$ 39.474</td><td class="ctr"><span class="pill" style="--c:#FFC64D">No ponto</span></td></tr><tr><td class=""><strong>F.FITNESS</strong></td><td class="num">5</td><td class="num">97d</td><td class="num">232d</td><td class="num"><span class="neg">+135d</span></td><td class="num money">R$ 34.138</td><td class="ctr"><span class="pill" style="--c:#FF5C7A">Atrasada</span></td></tr><tr><td class=""><strong>Josineide Oliveira</strong></td><td class="num">18</td><td class="num">22d</td><td class="num">28d</td><td class="num"><span class="neg">+6d</span></td><td class="num money">R$ 28.943</td><td class="ctr"><span class="pill" style="--c:#FFC64D">No ponto</span></td></tr><tr><td class=""><strong>Renata Nascimento</strong></td><td class="num">25</td><td class="num">21d</td><td class="num">50d</td><td class="num"><span class="neg">+29d</span></td><td class="num money">R$ 24.940</td><td class="ctr"><span class="pill" style="--c:#FF5C7A">Atrasada</span></td></tr><tr><td class=""><strong>Mara Lopes</strong></td><td class="num">29</td><td class="num">8d</td><td class="num">8d</td><td class="num"><span class="pos">0d</span></td><td class="num money">R$ 23.246</td><td class="ctr"><span class="pill" style="--c:#FFC64D">No ponto</span></td></tr><tr><td class=""><strong>Amanda Souza</strong></td><td class="num">8</td><td class="num">4d</td><td class="num">7d</td><td class="num"><span class="neg">+3d</span></td><td class="num money">R$ 22.945</td><td class="ctr"><span class="pill" style="--c:#FF5C7A">Atrasada</span></td></tr><tr><td class=""><strong>FINERIA GRECIA</strong></td><td class="num">5</td><td class="num">28d</td><td class="num">27d</td><td class="num"><span class="pos">0d</span></td><td class="num money">R$ 21.664</td><td class="ctr"><span class="pill" style="--c:#FFC64D">No ponto</span></td></tr><tr><td class=""><strong>VictoriaBruna Lessa</strong></td><td class="num">20</td><td class="num">28d</td><td class="num">43d</td><td class="num"><span class="neg">+15d</span></td><td class="num money">R$ 20.922</td><td class="ctr"><span class="pill" style="--c:#FF5C7A">Atrasada</span></td></tr><tr><td class=""><strong>Layse Gregorio</strong></td><td class="num">28</td><td class="num">7d</td><td class="num">12d</td><td class="num"><span class="neg">+5d</span></td><td class="num money">R$ 20.630</td><td class="ctr"><span class="pill" style="--c:#FF5C7A">Atrasada</span></td></tr><tr><td class=""><strong>Suelany Oliveira</strong></td><td class="num">23</td><td class="num">27d</td><td class="num">48d</td><td class="num"><span class="neg">+21d</span></td><td class="num money">R$ 19.996</td><td class="ctr"><span class="pill" style="--c:#FF5C7A">Atrasada</span></td></tr><tr><td class=""><strong>Luana Galdino</strong></td><td class="num">13</td><td class="num">44d</td><td class="num">78d</td><td class="num"><span class="neg">+34d</span></td><td class="num money">R$ 18.819</td><td class="ctr"><span class="pill" style="--c:#FF5C7A">Atrasada</span></td></tr><tr><td class=""><strong>FRANCISCA DA SILVA</strong></td><td class="num">8</td><td class="num">35d</td><td class="num">79d</td><td class="num"><span class="neg">+44d</span></td><td class="num money">R$ 17.483</td><td class="ctr"><span class="pill" style="--c:#FF5C7A">Atrasada</span></td></tr><tr><td class=""><strong>SUENIA MOSSORO</strong></td><td class="num">8</td><td class="num">21d</td><td class="num">50d</td><td class="num"><span class="neg">+29d</span></td><td class="num money">R$ 17.298</td><td class="ctr"><span class="pill" style="--c:#FF5C7A">Atrasada</span></td></tr><tr><td class=""><strong>Marinalva Lima</strong></td><td class="num">12</td><td class="num">50d</td><td class="num">89d</td><td class="num"><span class="neg">+39d</span></td><td class="num money">R$ 17.140</td><td class="ctr"><span class="pill" style="--c:#FF5C7A">Atrasada</span></td></tr></tbody></table></div>
+    <div class="ins red"><b>F.FITNESS</b> é o caso mais crítico: compra a cada ~97 dias, mas está
+    há <b>232 dias</b> sem comprar — 135 dias além do ciclo. É uma conta de
+    R$ 34 mil escorregando em silêncio.</div>
+    <div class="ins amber">Já <b>Márcia Alves</b> e <b>Mara Lopes</b> têm ciclo curtíssimo
+    (7 e 8 dias) e estão exatamente no ponto. Um lembrete hoje provavelmente vira venda amanhã.</div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><h2>Melhores clientes em dia</h2>
+  <p class="snote">Alto valor e recompra dentro do prazo — ordenadas por RFM.</p></div>
+  <div class="card">
+    <span class="tag t-green">Núcleo saudável</span>
+    <div class="scroll"><table class="tbl "><thead><tr><th class="">Cliente</th><th class="num">Compras</th><th class="num">Ciclo</th><th class="num">Última</th><th class="num">Ticket médio</th><th class="num money">Faturamento</th><th class="ctr">RFM</th></tr></thead><tbody><tr><td class=""><strong>Thayna Rodrigues Mauricio</strong></td><td class="num">28</td><td class="num">20d</td><td class="num">há 8d</td><td class="num">R$ 1.853</td><td class="num money">R$ 51.873</td><td class="ctr"><span class="rfm">15</span></td></tr><tr><td class=""><strong>Priscilla Alves</strong></td><td class="num">60</td><td class="num">4d</td><td class="num">há 0d</td><td class="num">R$ 787</td><td class="num money">R$ 47.205</td><td class="ctr"><span class="rfm">15</span></td></tr><tr><td class=""><strong>marcia ALVES</strong></td><td class="num">37</td><td class="num">7d</td><td class="num">há 6d</td><td class="num">R$ 1.174</td><td class="num money">R$ 43.449</td><td class="ctr"><span class="rfm">15</span></td></tr><tr><td class=""><strong>Jorge Emiliano mori perez</strong></td><td class="num">6</td><td class="num">21d</td><td class="num">há 22d</td><td class="num">R$ 6.579</td><td class="num money">R$ 39.474</td><td class="ctr"><span class="rfm">15</span></td></tr><tr><td class=""><strong>Cristielle Sena</strong></td><td class="num">35</td><td class="num">12d</td><td class="num">há 0d</td><td class="num">R$ 1.094</td><td class="num money">R$ 38.280</td><td class="ctr"><span class="rfm">15</span></td></tr><tr><td class=""><strong>Silvaneide De Souza alves</strong></td><td class="num">44</td><td class="num">5d</td><td class="num">há 0d</td><td class="num">R$ 801</td><td class="num money">R$ 35.266</td><td class="ctr"><span class="rfm">15</span></td></tr><tr><td class=""><strong>elisiane brito</strong></td><td class="num">8</td><td class="num">13d</td><td class="num">há 0d</td><td class="num">R$ 4.309</td><td class="num money">R$ 34.475</td><td class="ctr"><span class="rfm">15</span></td></tr><tr><td class=""><strong>Joao pedro Araujo</strong></td><td class="num">30</td><td class="num">21d</td><td class="num">há 8d</td><td class="num">R$ 1.099</td><td class="num money">R$ 32.961</td><td class="ctr"><span class="rfm">15</span></td></tr><tr><td class=""><strong>Isadora Crystine Medeiros Fernan</strong></td><td class="num">28</td><td class="num">27d</td><td class="num">há 8d</td><td class="num">R$ 1.159</td><td class="num money">R$ 32.460</td><td class="ctr"><span class="rfm">15</span></td></tr><tr><td class=""><strong>Josineide Oliveira</strong></td><td class="num">18</td><td class="num">22d</td><td class="num">há 28d</td><td class="num">R$ 1.608</td><td class="num money">R$ 28.943</td><td class="ctr"><span class="rfm">15</span></td></tr><tr><td class=""><strong>Jaine Guabiraba</strong></td><td class="num">30</td><td class="num">21d</td><td class="num">há 8d</td><td class="num">R$ 895</td><td class="num money">R$ 26.848</td><td class="ctr"><span class="rfm">15</span></td></tr><tr><td class=""><strong>Mara Lopes</strong></td><td class="num">29</td><td class="num">8d</td><td class="num">há 8d</td><td class="num">R$ 802</td><td class="num money">R$ 23.246</td><td class="ctr"><span class="rfm">15</span></td></tr></tbody></table></div>
+    <div class="ins">O RFM combina <b>recência, frequência e valor</b> numa nota de 3 a 15.
+    Quem aparece com 14 ou 15 compra muito, compra sempre e comprou há pouco:
+    é para essas clientes que vale abrir lançamento antes de todo mundo.</div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><h2>Recuperação</h2>
+  <p class="snote">Clientes de alto valor que já pararam — foco de campanha de reconquista.</p></div>
+  <div class="card">
+    <span class="tag t-amber">Win-back</span>
+    <div class="scroll"><table class="tbl "><thead><tr><th class="">Cliente</th><th class="num">Compras</th><th class="num">Ciclo</th><th class="num">Sem comprar</th><th class="num money">Faturamento</th></tr></thead><tbody><tr><td class=""><strong>LAIS ALVES</strong></td><td class="num">46</td><td class="num">9d</td><td class="num"><span class="neg">76d</span></td><td class="num money">R$ 319.258</td></tr><tr><td class=""><strong>LUDIMILA GRECIA</strong></td><td class="num">21</td><td class="num">20d</td><td class="num"><span class="neg">231d</span></td><td class="num money">R$ 70.761</td></tr><tr><td class=""><strong>PAULA LUDMEC</strong></td><td class="num">40</td><td class="num">8d</td><td class="num"><span class="neg">166d</span></td><td class="num money">R$ 63.198</td></tr><tr><td class=""><strong>SAL E PIMENTA</strong></td><td class="num">4</td><td class="num">2d</td><td class="num"><span class="neg">367d</span></td><td class="num money">R$ 61.855</td></tr><tr><td class=""><strong>Diego Mongelos Penayo</strong></td><td class="num">18</td><td class="num">22d</td><td class="num"><span class="neg">231d</span></td><td class="num money">R$ 58.577</td></tr><tr><td class=""><strong>SOUL INDUSTRIA TEXTIL LTDA</strong></td><td class="num">2</td><td class="num">43d</td><td class="num"><span class="neg">371d</span></td><td class="num money">R$ 57.092</td></tr><tr><td class=""><strong>DANIELA SOUZA SILVA</strong></td><td class="num">22</td><td class="num">8d</td><td class="num"><span class="neg">545d</span></td><td class="num money">R$ 55.720</td></tr><tr><td class=""><strong>CELIA GRECIA</strong></td><td class="num">12</td><td class="num">5d</td><td class="num"><span class="neg">246d</span></td><td class="num money">R$ 49.268</td></tr><tr><td class=""><strong>Ana Paula santos Melo</strong></td><td class="num">7</td><td class="num">10d</td><td class="num"><span class="neg">140d</span></td><td class="num money">R$ 46.178</td></tr><tr><td class=""><strong>RENATA SANTOS</strong></td><td class="num">12</td><td class="num">2d</td><td class="num"><span class="neg">29d</span></td><td class="num money">R$ 43.217</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><h2>A leitura do período</h2></div>
+  <div class="card">
+    <div class="ins"><b>A base é mensal e previsível.</b> Com ciclo mediano de 33 dias e a maior
+    parte das clientes entre 16 e 30 dias, dá para operar recompra como rotina:
+    todo dia existe uma lista de quem está entrando na janela.</div>
+    <div class="ins red"><b>O maior vazamento não é o atraso — é a primeira compra.</b>
+    1.483 clientes ativas compraram <b>uma única vez</b>.
+    Elas já custaram aquisição e não voltaram. Um fluxo dedicado de segunda compra,
+    disparado ~20 dias após a estreia, é a maior alavanca disponível hoje.</div>
+    <div class="ins amber"><b>A carteira é concentrada.</b> A curva A responde por 80% do
+    faturamento com 773 clientes. Perder dez
+    delas dói mais do que perder mil da curva C — por isso a lista de contato imediato
+    é ordenada por valor, não por atraso.</div>
+    <div class="ins"><b>Como usar daqui pra frente.</b> A régua já está definida: 33 dias.
+    Puxar semanalmente quem cruzou 0,8 do próprio ciclo transforma esta análise
+    de foto em rotina — e é assim que o atraso deixa de virar perda.</div>
+  </div>
+</section>
+
+<footer>
+  <span>Bless-U Fitness · Inteligência de Recompra</span>
+  <span>Fonte: Vendas por período (PDV) · 7.305 vendas · referência 28/07/2026</span>
+</footer>
+</div></body></html>
